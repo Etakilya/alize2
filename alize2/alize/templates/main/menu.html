@@ -1,0 +1,65 @@
+{% extends "default.html" %}
+{% load static %}
+{% block title %}Menu{% endblock %}
+{% block content %}
+
+    <div class="container">
+          {% if categories %}
+            {% for category in categories %}
+      <div class="bg-faded p-4 my-4">
+        <div class="card card-inverse">
+          <img  src="{% static 'main/project/eda/' %}{{ category.img}}" alt="">
+          <div class="card-img-overlay bg-overlay">
+            <h2 class="card-title text-shadow text-white text-uppercase mb-0">{{ category.name }} </h2>
+            <p class="lead card-text text-shadow text-white w-50 d-none d-lg-block">{{ category.desc }}</p>
+            
+            
+            <a href="{{category}}" class="btn btn-secondary">Перейти</a>
+            
+          </div>
+        </div>
+      </div>
+      
+     {% endfor %}
+      {% endif %}
+{% endblock %}
+      
+
+    <script src="{% static 'https://code.jquery.com/jquery-3.2.1.slim.min.js' %}" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js' %}" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js' %}" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
+          </script>
+    <script>
+
+$(function () {
+    $("div").slice(0, 4).show();
+    $("#loadMore").on('click', function (e) {
+        e.preventDefault();
+        $("div:hidden").slice(0, 4).slideDown();
+        if ($("div:hidden").length == 0) {
+            $("#load").fadeOut('slow');
+        }
+        $('html,body').animate({
+            scrollTop: $(this).offset().top
+        }, 1500);
+    });
+});
+
+$('a[href=#top]').click(function () {
+    $('body,html').animate({
+        scrollTop: 0
+    }, 600);
+    return false;
+});
+
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 50) {
+        $('.totop a').fadeIn();
+    } else {
+        $('.totop a').fadeOut();
+    }
+});
+            </script>
+  </body>
+
+</html>

@@ -1,0 +1,78 @@
+{% extends "default.html" %}
+{% load static %}
+{% block title %}Menu{% endblock %}
+{% block content %}
+    <div class="container">
+    <div class="bg-faded p-4 my-4">
+    <a href="{% url 'category' %}" class="btn btn-secondary">Назад</a>
+        
+          {% if pizzas %}
+          <hr class="divider">
+
+        <h2 class="text-center text-lg text-uppercase my-0">
+          <strong>PIZZA</strong>
+        </h2>
+        <hr class="divider">
+        <div class="row">
+            {% for pizza in pizzas %}
+            <div class="col-md-4 mb-4 mb-md-0">
+             <div class="card h-100">
+              <img class="card-img-top" src="{% static 'main/project/eda/' %}{{ pizza.img}}" alt="" width="300" height="200">
+              <h4 class="card-title m-0">{{ pizza.name }}<strong style="color:red">{{ pizza.price }}</strong>
+                  <br><small class="text-muted">{{ pizza.desc }}</small>
+                </h4>
+            </div>
+            </div>
+            
+            {% endfor %}
+            
+          {% endif %}
+            {% if salads %}
+            <hr class="divider">
+
+        <h2 class="text-center text-lg text-uppercase my-0">
+          <strong>SALAD</strong>
+        </h2>
+        <hr class="divider">
+        <div class="row">
+            {% for salad in salads %}
+            <div class="col-md-4 mb-4 mb-md-0">
+             <div class="card h-100">
+              <img class="card-img-top" src="{% static 'main/project/eda/' %}{{ salad.img}}" alt="" width="300" height="200">
+              <h4 class="card-title m-0">{{ salad.name }}<strong style="color:red">{{ salad.price }}</strong>
+                  <br><small class="text-muted">{{ salad.desc }}</small>
+                </h4>
+            </div>
+            </div>
+            {% endfor %}
+           
+          {% endif %}
+           {% if steaks %}
+           <hr class="divider">
+
+        <h2 class="text-center text-lg text-uppercase my-0">
+          <strong>STEAK</strong>
+        </h2>
+        <hr class="divider">
+        <div class="row">
+            {% for steak in steaks %}
+            <div class="col-md-4 mb-4 mb-md-0">
+             <div class="card h-100">
+              <img class="card-img-top" src="{% static 'main/project/eda/' %}{{ steak.img}}" alt="" width="300" height="200">
+              <h4 class="card-title m-0">{{ steak.name }}<strong style="color:red">{{ steak.price }}</strong>
+                  <br><small class="text-muted">{{ steak.desc }}</small>
+                </h4>
+            </div>
+            </div>
+            {% endfor %}
+           
+          {% endif %}
+          
+ 
+          
+        </div>
+      </div>
+      </div>
+{% endblock %}
+
+

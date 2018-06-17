@@ -1,0 +1,12 @@
+{% extends "default.html" %}
+{% load static %}
+{% block title %}Edit User Page{% endblock %}
+{% block content %}
+
+	<form class="modal-content animate" action="" method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		
+		<input class="button lg" type="submit" value="Edit">
+	</form>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "default.html" %}
+{% load static %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+    <div class="container">
+      
+      <div class="bg-faded p-4 my-4">
+        <hr class="divider">
+        <h2 class="text-center text-lg text-uppercase my-0">Наши
+          <strong>Контакты</strong>
+        </h2>
+        <hr class="divider">
+        <div class="row">
+          <div class="col-lg-6">
+          
+           <div id="map"></div>
+            </div>
+          
+          <div class="col-lg-4">
+          <i class="fa fa-phone"></i>
+            <h5 class="mb-0">Контакты:</h5>
+            <div class="mb-4">+7-701-044-05-55,<br> +7-708-183-03-73</div>
+            
+            <i class="fa fa-map-marker"></i><h5 class="mb-0">Адрес:</h5>
+            <div class="mb-4">
+              город Атырау
+              <br>
+              улица Жарбосынова, 83B
+            </div>
+            <i class="fa fa-clock-o"></i><h5 class="mb-0">Режим работы:</h5>
+            <div class="mb-4">
+              11:00 - 2:00
+              
+            </div>
+          </div>
+          </div>
+          
+        <hr class="divider">
+        <h2 class="text-center text-lg text-uppercase my-0">Leave your
+          <strong>Comments</strong>
+        </h2>
+        <hr class="divider">
+                  {% for comment in comments %}
+                                    <div class="comment">
+                                        <div class="author-avatar">
+                                            <img class="avatar" src="{% static 'main/img/models/avatar.png' %}" alt="">
+                                        </div>
+                                        <div class="data-rating">
+                                            <div class="data">
+                                                <h3>{{ comment.user }}</h3>
+                                                <h5>{{ comment.created }}</h5>
+                                                <h4>{{ comment.body }}</h4>
+                                            </div>    <div class="rating">
+                                                <a href=""><i class="rating-yellow fa fa-star-o" aria-hidden="true"></i></a>
+                                                <a href=""><i class="rating-yellow fa fa-star-o" aria-hidden="true"></i></a>
+                                                <a href=""><i class="rating-yellow fa fa-star-o" aria-hidden="true"></i></a>
+                                                <a href=""><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                <a href=""><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                                <a href=""><i class="fa fa-edt" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% empty %}
+                                        <p>There are no comments.</p>
+                                    {% endfor %}    
+                                  <hr>
+                                    <div class="add-review">
+                                        <h2>Add comment</h2>
+                                        <form method='POST'>{% csrf_token %}
+                                          {{ form.as_p }}
+                                          <button type="submit" class="cmt">Comment</button>
+                                        </form></div>
+
+
+           </div>
+         </div>
+
+
+        </div>
+      </div>
+
+
+ 
+
+
+
+      
+
+    </div>
+{% endblock %}
